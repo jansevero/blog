@@ -34,4 +34,10 @@ export class JsonPostRepository implements PostRepository {
 
 export const postRepository: PostRepository = new JsonPostRepository();
 
-postRepository.findAll().then(posts => console.log(posts)).catch(err => console.error(err));
+postRepository.findAll().then(posts => {
+    posts.forEach(post => {
+        console.log(`ID: ${post.id}`);
+        console.log(`Title: ${post.title}`);
+        console.log(`Content: ${post.content}`);
+    });
+}).catch(err => console.error(err));
